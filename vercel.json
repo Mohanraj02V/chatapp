@@ -1,13 +1,23 @@
 {
-    "builds": [{
+    "version": 2,
+    "builds": [
+      {
         "src": "chatapp/wsgi.py",
-        "use": "@vercel/python",
-        "config": {"maxLambdaSize":"15mb", "runtime":"python3.12.4"}
-    }],
+        "use": "@vercel/python"
+      }
+    ],
     "routes": [
-        {
-          "src": "/(.*)",
-          "dest": "chatapp/wsgi.py"
-        }
-      ]
-}
+      {
+        "src": "/(.*)",
+        "dest": "chatapp/wsgi.py"
+      }
+    ],
+
+    "build": {
+      "env": {
+        "PYTHON_VERSION": "3.12.4",
+        "mysqlclient":"2.2.4"
+      }
+    }
+
+  }
